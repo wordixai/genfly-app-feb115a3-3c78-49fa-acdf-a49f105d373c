@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expose port 5173 (Vite's default dev port)
-EXPOSE 3000
+EXPOSE 8080
 
 # Set host to allow external connections
 ENV HOST=0.0.0.0
