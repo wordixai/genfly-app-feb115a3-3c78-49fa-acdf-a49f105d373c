@@ -1,8 +1,10 @@
-import JobSearch from "@/components/JobSearch";
-import JobList from "@/components/JobList";
-import { jobListings } from "@/data/jobs";
+import Link from "next/link";
 
-export default function Home() {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm">
@@ -10,8 +12,8 @@ export default function Home() {
           <div className="flex justify-between items-center">
             <h1 className="text-3xl font-bold text-gray-900">JobBoard</h1>
             <nav className="flex space-x-8">
-              <a href="/" className="text-gray-900 hover:text-gray-600 font-medium">Jobs</a>
-              <a href="/companies" className="text-gray-500 hover:text-gray-900 font-medium">Companies</a>
+              <Link href="/" className="text-gray-900 hover:text-gray-600 font-medium">Jobs</Link>
+              <Link href="/companies" className="text-gray-500 hover:text-gray-900 font-medium">Companies</Link>
               <a href="#" className="text-gray-500 hover:text-gray-900 font-medium">Post a Job</a>
             </nav>
           </div>
@@ -19,15 +21,7 @@ export default function Home() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Find your next opportunity</h2>
-          <JobSearch />
-        </div>
-        
-        <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Latest Jobs</h3>
-          <JobList jobs={jobListings} />
-        </div>
+        {children}
       </main>
 
       <footer className="bg-white border-t border-gray-200 mt-12">
